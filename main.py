@@ -18,4 +18,40 @@ print (cap_word)
 
 #compressing a string of characters
 
-def solve(compress):
+def compress(string):
+    index = 0
+    compressed = ""
+    len_str = len(string)
+    while index != len_str:
+        count = 1
+        while (index < len_str-1) and (string[index] == string[index+1]):
+            count = count + 1
+            index = index + 1
+        if count == 1:
+            compressed += str(string[index])
+        else:
+            compressed += str(string[index]) + str(count)
+        index = index + 1
+    return compressed
+       
+ 
+string = "aaaaaaaaaaabbbbbbbbbbbbcccccccccccffffffffffffffjjjjjj"
+print(compress(string))
+
+def is_palindrome(word):
+    
+    reversed_word = word[::-1]
+    status = 1
+    if word != reversed_word:
+        status =0
+    return status
+
+word = input("Enter a Polindrome word: ")
+status = is_palindrome(word)
+
+while status != 1:
+    print("Sorry! Try again")
+    is_palindrome(word)   
+else:
+    print("That is a palindrome!")
+    
